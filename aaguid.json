@@ -16,5 +16,8 @@
     },
     "6028b017-b1d4-4c02-b4b3-afcdafc96bb2": {
         "name": "Windows Hello"
+    },
+    "dd4ec289-e01d-41c9-bb89-70fa845d4bf2": {
+        "name": "Apple iCloud Keychain (Managed)"
     }
 }
