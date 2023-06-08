@@ -1,0 +1,32 @@
+{
+    "ea9b8d66-4d01-1d21-3ce4-b6b48cb575d4": {
+        "platform": "Android",
+        "friendlyName": "Google Password Manager",
+        "verboseName": "Google Password Manager on Android"
+    },
+    "adce0002-35bc-c60a-648b-0b25f1f05503": {
+        "platform": "macOS",
+        "friendlyName": "Chrome on Mac",
+        "verboseName": "Chrome on macOS"
+    },
+    "08987058-cadc-4b81-b6e1-30de50dcbe96": {
+        "platform": "Windows",
+        "friendlyName": "Windows Hello",
+        "verboseName": "Windows Hello"
+    },
+    "9ddd1817-af5a-4672-a2b9-3e3dd95000a9": {
+        "platform": "Windows",
+        "friendlyName": "Windows Hello",
+        "verboseName": "Windows Hello"
+    },
+    "6e96969e-a5cf-4aad-9b56-305fe6c82795": {
+        "platform": "Windows",
+        "friendlyName": "Windows Hello",
+        "verboseName": "Windows Hello"
+    },
+    "6028b017-b1d4-4c02-b4b3-afcdafc96bb2": {
+        "platform": "Windows",
+        "friendlyName": "Windows Hello",
+        "verboseName": "Windows Hello"
+    }
+}
