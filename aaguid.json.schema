@@ -6,13 +6,7 @@
     "additionalProperties": {
         "type": "object",
         "properties": {
-            "platform": {
-                "type": "string"
-            },
-            "friendlyName": {
-                "type": "string"
-            },
-            "verboseName": {
+            "name": {
                 "type": "string"
             }
         },
