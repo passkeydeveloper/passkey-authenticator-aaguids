@@ -1,0 +1,25 @@
+{
+    "$id": "https://raw.githubusercontent.com/passkeydeveloper/passkey-authenticator-aaguids/main/aaguid.json.schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "AAGUID",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "properties": {
+            "platform": {
+                "type": "string"
+            },
+            "friendlyName": {
+                "type": "string"
+            },
+            "verboseName": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "platform",
+            "friendlyName",
+            "verboseName"
+        ]
+    }
+}
