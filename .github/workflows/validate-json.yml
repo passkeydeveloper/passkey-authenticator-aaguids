@@ -1,5 +1,13 @@
 name: Validate JSON Schema
-on: [pull_request]
+on: 
+  pull_request:
+    paths-ignore:
+      - README.md
+      - README
+      - LICENSE.md
+      - LICENSE
+      - .gitignore
+      - aaguid.json.schema
 
 permissions:
   contents: read
@@ -15,6 +23,6 @@ jobs:
         id: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v2.0.0
         with:
+          comment: "true"
           mode: "fail"
           json_schema: "aaguid.json.schema"
-          comment: "true"
