@@ -8,6 +8,16 @@
         "properties": {
             "name": {
                 "type": "string"
+            },
+            "icon_dark": {
+                "type": "string",
+                "pattern": "^data:image\/svg\\+xml;base64,(.*)$",
+                "description": "SVG base64 encoded as a data URI"
+            },
+            "icon_light": {
+                "type": "string",
+                "pattern": "^data:image\/svg\\+xml;base64,(.*)$",
+                "description": "SVG base64 encoded as a data URI"
             }
         },
         "required": [
