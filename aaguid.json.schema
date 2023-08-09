@@ -11,9 +11,7 @@
             }
         },
         "required": [
-            "platform",
-            "friendlyName",
-            "verboseName"
+            "name"
         ]
     }
 }
