@@ -16,7 +16,7 @@ Each AAGUID member can also _optionally_ contain embedded icon data, for use nex
 
 The properties are `icon_dark` and `icon_light`. The values of these properties must be SVG data encoded into a base64 data URI. `icon_dark` should be a version targeted at dark mode and/or dark backgrounds. `icon_light` should be a version targeted at light mode and/or light backgrounds. The image must be square and have adequate padding around the icon/element.
 
-Many web-based tools can do this encoding/formatting, including: [https://base64.guru/converter/encode/image/svg](https://base64.guru/converter/encode/image/svg).
+Many web-based tools can do this encoding/formatting, including: [https://base64.guru/converter/encode/image/svg](https://base64.guru/converter/encode/image/svg) (select `Data URI` under "Output Format").
 
 Example of the Google G icon as a base64 encoded SVG data URI:
 
