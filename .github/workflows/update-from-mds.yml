@@ -1,0 +1,83 @@
+name: Download MDS
+
+on:
+  schedule:
+    - cron: '0 12 1 * *' # Update first of the month
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      - uses: jannekem/run-python-script-action@v1
+        id: script
+        with:
+          fail-on-error: false
+          script: |
+            import requests
+            import base64
+            import json
+            
+            # Download MDS blob from FIDO endpoint
+            response = requests.get("https://mds.fidoalliance.org/")
+            mdstocjwt = response.content.decode('ascii')
+            
+            # Parse out MDS data from JWT
+            jwt_payload = mdstocjwt.split('.')[1].replace('-', '+').replace('_', '/')
+            while len(jwt_payload) % 4:
+                jwt_payload += "="
+            mds_bytes = base64.b64decode(jwt_payload)
+            mds_strings = mds_bytes.decode('utf-8')
+            mds_data = json.loads(mds_strings)
+            
+            # Extract FIDO2 statements with non-null aaguid and required properties
+            fido2_statements = [
+                entry['metadataStatement']
+                for entry in mds_data['entries']
+                if entry.get('aaguid') is not None
+            ]
+            
+            # Create a dictionary with the desired structure
+            result_dict = {}
+            for statement in fido2_statements:
+                result_dict[statement['aaguid']] = {
+                    "name": statement['description'],
+                    "icon_light": statement.get('icon', None),
+                    "icon_dark": statement.get('icon', None)
+                }
+            
+            # import custom aaguid.json
+            with open('aaguid.json', 'r') as aaguid_file:
+              aaguid = json.load(aaguid_file)
+            
+            # Combine custom aaguid.json with data from MDS            
+            result = {**aaguid, **result_dict}
+            
+            # Write combined result to file
+            with open('combined_aaguid.json', 'w') as output_file:
+              json.dump(result, output_file)
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "bot: Update file" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
