@@ -27,4 +27,4 @@ jobs:
           comment: "true"
           mode: "fail"
           json_schema: "aaguid.json.schema"
-          json_exclude_regex: "^combined_aaguid\.json$"
+          json_exclude_regex: "^combined_aaguid.json$"
