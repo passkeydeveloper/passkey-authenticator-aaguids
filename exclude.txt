@@ -1,0 +1,2 @@
+# excludes some files from JSON schema validation
+combined_aaguid.json
