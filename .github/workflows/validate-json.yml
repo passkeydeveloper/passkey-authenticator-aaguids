@@ -24,7 +24,7 @@ jobs:
         id: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v2.3.1
         with:
+          exclude_file: exclude.txt
           comment: "true"
           mode: "fail"
           json_schema: "aaguid.json.schema"
-          exclude_file: exclude.txt
