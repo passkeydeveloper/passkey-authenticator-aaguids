@@ -22,7 +22,7 @@ jobs:
 
       - name: json-yaml-validate
         id: json-yaml-validate
-        uses: GrantBirki/json-yaml-validate@v2.0.0
+        uses: GrantBirki/json-yaml-validate@v2.3.1
         with:
           comment: "true"
           mode: "fail"
