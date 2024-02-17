@@ -1,0 +1,127 @@
+html,
+body {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  font-family: sans-serif;
+  background-color: whitesmoke;
+}
+
+h1 {
+  font-weight: bold;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  width: 100%;
+  margin: -15px 0 15px -15px;
+  padding: 15px;
+  background-color: lightsteelblue;
+  border-bottom: 1px solid black;
+  box-shadow: 0 2px 2px 1px #888;
+}
+
+
+h2 {
+  width: 100%;
+  margin: 10px 0 10px -15px;
+  padding: 5px;
+  background-color: lightgray;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgb(186, 186, 186);
+  box-shadow: 0 2px 2px 1px #888;
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
+
+pre {
+  white-space: pre-wrap;
+  /* css-3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+}
+
+#about {
+  float: right;
+}
+
+#about img {
+  max-width: 32px;
+}
+
+#main,
+#loading-error {
+  display: none;
+  margin: 10px;
+}
+
+#aaguids {
+  border-collapse: collapse;
+}
+
+#aaguids td,
+#aaguids th {
+  border: black 1px solid;
+  padding: 10px;
+  vertical-align: top;
+}
+
+a {
+  color: cadetblue;
+  text-decoration: none;
+}
+
+#aaguids td.icon {
+  text-align: center;
+}
+
+#aaguids img {
+  max-width: 100px;
+  max-width: 50;
+}
+
+#aaguids td.dark,
+#aaguids th.dark {
+  background-color: #555;
+  color: white;
+}
+
+#aaguids th {
+  background-color: #DDD;
+}
+
+#aaguids th:last-of-type {
+  background-color: #333;
+}
+
+#aaguids th:nth-of-type(1) {
+  min-width: 19em;
+}
+#aaguids th:nth-of-type(2) {
+  min-width: 20em;
+}
+#filter {
+  width: 80%;
+}
+footer {
+  color: grey;
+  font-size: 80%;
+  text-align: left;
+  margin-top: 10px;
+}
