@@ -1,0 +1,37 @@
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <meta name="viewport" content="width=device-width,height=device-height, user-scalable=no" />
+  <title>Passkey AAGUIDs Explorer</title>
+  <meta name="description" content="View the Passkey AAGUIDs community repository">
+  <link rel="stylesheet" href="css/aaguids-explorer.css" />
+</head>
+
+<body>
+  <h1>
+    Passkey AAGUIDs Explorer
+    <span id="about">
+      <a href="https://github.com/passkeydeveloper/passkey-authenticator-aaguids">
+        <span class="icon"><img src="img/github-mark.svg"/></span>
+      </a>
+    </span>
+  </h1>
+
+  <div id="loading">Loading...</div>
+  <div id="loading-error" class="error">
+    <h2>Error</h2>
+    Failed to load the AAGUIDs data :(
+  </div>
+
+  <div id="main">
+    <div><a id="switch-json"></a></div>
+    <table id="aaguids">
+    </table>
+  </div>
+  <script src="js/aaguids-explorer.js"></script>
+  <footer>
+    This is a community-driven list of known passkey provider AAGUIDs to assist with naming passkeys in end user passkey management interfaces (e.g. account settings). It is not intended to be used for any other purpose and could go away at any time.<br>
+    This does not replace <a href="https://fidoalliance.org/metadata/">FIDO's Metadata Service (MDS)</a>, which should continue to be used for all authoritative security details about FIDO authenticators. Some AAGUIDs in this list may not appear in FIDO MDS.
+  </footer>
+</body>
