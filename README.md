@@ -7,8 +7,9 @@ This is a **community-driven** list of known passkey provider AAGUIDs to assist 
 >
 > It is **_highly_** recommended that you add some code that checks for an empty object after fetching the document (ex: `Object.keys(aaguid).length === 0`), and notifying the appropriate team(s). This README will also be updated with details.
 
-
 This does not replace [FIDO's Metadata Service (MDS)](https://fidoalliance.org/metadata/), which should continue to be used for all authoritative security details about FIDO authenticators. Some AAGUIDs in this list may not appear in FIDO MDS.
+
+A visual explorer of the list is available here: https://passkeydeveloper.github.io/passkey-authenticator-aaguids/explorer/
 
 ## Schema
 
