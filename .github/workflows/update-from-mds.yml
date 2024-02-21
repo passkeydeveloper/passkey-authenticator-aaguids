@@ -74,7 +74,7 @@ jobs:
               aaguid = json.load(aaguid_file)
             
             # Combine custom aaguid.json with data from MDS            
-            result = {**aaguid, **result_dict}
+            result = {**result_dict, **aaguid}
             
             # Write combined result to file
             with open('combined_aaguid.json', 'w') as output_file:
