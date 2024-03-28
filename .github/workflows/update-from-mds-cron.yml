@@ -1,4 +1,4 @@
-name: Download MDS
+name: Scheduled Download from MDS
 
 on:
   schedule:
