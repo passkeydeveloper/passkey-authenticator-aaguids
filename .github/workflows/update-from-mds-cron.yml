@@ -3,6 +3,7 @@ name: Scheduled Download from MDS
 on:
   schedule:
     - cron: '0 12 1 * *' # Update first of the month
+    - cron: '0 12 15 * *' # Update 15th of the month
   workflow_dispatch:
     inputs:
       logLevel:
