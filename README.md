@@ -21,7 +21,7 @@ Each AAGUID member has at minimum, a `name` property. This property represents t
 
 Each AAGUID member can also _optionally_ contain embedded icon data, for use next to the friendly name in RP interfaces.
 
-The properties are `icon_dark` and `icon_light`. The values of these properties must be SVG data encoded into a base64 data URI. `icon_dark` should be a version targeted at dark mode and/or dark backgrounds. `icon_light` should be a version targeted at light mode and/or light backgrounds. The image must be square.
+The properties are `icon_dark` and `icon_light`. The values of these properties must be SVG data encoded into a base64 data URI. `icon_dark` should be a version targeted at dark mode and/or dark backgrounds. `icon_light` should be a version targeted at light mode and/or light backgrounds. The image must be square. The icon must be completely vector based and cannot contain embedded images (PNG, JPG, etc).
 
 Many web-based tools can do this encoding/formatting, including: [https://base64.guru/converter/encode/image/svg](https://base64.guru/converter/encode/image/svg) (select `Data URI` under "Output Format").
 
