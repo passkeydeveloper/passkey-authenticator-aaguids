@@ -1,0 +1,5 @@
+{
+  "name": "Somu Secp256R1 FIDO2 CTAP2 Authenticator",
+  "icon_dark": "icon-dark.png",
+  "icon_light": "icon-light.png"
+}
