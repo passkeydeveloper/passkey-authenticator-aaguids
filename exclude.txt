@@ -1,1 +1,2 @@
 combined_aaguid.json
+dist/

@@ -1,0 +1,56 @@
+name: Split AAGUIDs into Individual Files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - combined_aaguid.json
+      - aaguid.json
+      - scripts/split-aaguids.sh
+  pull_request:
+    paths:
+      - combined_aaguid.json
+      - aaguid.json
+      - scripts/split-aaguids.sh
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run split script
+        run: bash scripts/split-aaguids.sh
+
+      - name: Verify dist is in sync
+        if: github.event_name == 'pull_request'
+        run: |
+          git add dist/
+          if ! git diff --cached --quiet; then
+            echo "::error::dist/ is out of sync with combined_aaguid.json. Run 'bash scripts/split-aaguids.sh' and commit the result."
+            git diff --cached --stat
+            exit 1
+          fi
+
+      - name: Check for changes
+        if: github.event_name != 'pull_request'
+        id: changes
+        run: |
+          git add dist/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: github.event_name != 'pull_request' && steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "bot: Regenerate split AAGUID assets"
+          git push

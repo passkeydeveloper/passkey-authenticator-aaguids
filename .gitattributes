@@ -1,0 +1,2 @@
+# Mark generated split output as linguist-generated so it collapses in PR diffs
+dist/** linguist-generated=true

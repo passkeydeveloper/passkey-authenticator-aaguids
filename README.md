@@ -33,6 +33,43 @@ Example of the Google G icon as a base64 encoded SVG data URI:
 data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAyNy4wMDkwMDEsIC0zOS4yMzg5OTgpIj4KICAgIDxwYXRoIGZpbGw9IiM0Mjg1RjQiIGQ9Ik0gLTMuMjY0IDUxLjUwOSBDIC0zLjI2NCA1MC43MTkgLTMuMzM0IDQ5Ljk2OSAtMy40NTQgNDkuMjM5IEwgLTE0Ljc1NCA0OS4yMzkgTCAtMTQuNzU0IDUzLjc0OSBMIC04LjI4NCA1My43NDkgQyAtOC41NzQgNTUuMjI5IC05LjQyNCA1Ni40NzkgLTEwLjY4NCA1Ny4zMjkgTCAtMTAuNjg0IDYwLjMyOSBMIC02LjgyNCA2MC4zMjkgQyAtNC41NjQgNTguMjM5IC0zLjI2NCA1NS4xNTkgLTMuMjY0IDUxLjUwOSBaIi8+CiAgICA8cGF0aCBmaWxsPSIjMzRBODUzIiBkPSJNIC0xNC43NTQgNjMuMjM5IEMgLTExLjUxNCA2My4yMzkgLTguODA0IDYyLjE1OSAtNi44MjQgNjAuMzI5IEwgLTEwLjY4NCA1Ny4zMjkgQyAtMTEuNzY0IDU4LjA0OSAtMTMuMTM0IDU4LjQ4OSAtMTQuNzU0IDU4LjQ4OSBDIC0xNy44ODQgNTguNDg5IC0yMC41MzQgNTYuMzc5IC0yMS40ODQgNTMuNTI5IEwgLTI1LjQ2NCA1My41MjkgTCAtMjUuNDY0IDU2LjYxOSBDIC0yMy40OTQgNjAuNTM5IC0xOS40NDQgNjMuMjM5IC0xNC43NTQgNjMuMjM5IFoiLz4KICAgIDxwYXRoIGZpbGw9IiNGQkJDMDUiIGQ9Ik0gLTIxLjQ4NCA1My41MjkgQyAtMjEuNzM0IDUyLjgwOSAtMjEuODY0IDUyLjAzOSAtMjEuODY0IDUxLjIzOSBDIC0yMS44NjQgNTAuNDM5IC0yMS43MjQgNDkuNjY5IC0yMS40ODQgNDguOTQ5IEwgLTIxLjQ4NCA0NS44NTkgTCAtMjUuNDY0IDQ1Ljg1OSBDIC0yNi4yODQgNDcuNDc5IC0yNi43NTQgNDkuMjk5IC0yNi43NTQgNTEuMjM5IEMgLTI2Ljc1NCA1My4xNzkgLTI2LjI4NCA1NC45OTkgLTI1LjQ2NCA1Ni42MTkgTCAtMjEuNDg0IDUzLjUyOSBaIi8+CiAgICA8cGF0aCBmaWxsPSIjRUE0MzM1IiBkPSJNIC0xNC43NTQgNDMuOTg5IEMgLTEyLjk4NCA0My45ODkgLTExLjQwNCA0NC41OTkgLTEwLjE1NCA0NS43ODkgTCAtNi43MzQgNDIuMzY5IEMgLTguODA0IDQwLjQyOSAtMTEuNTE0IDM5LjIzOSAtMTQuNzU0IDM5LjIzOSBDIC0xOS40NDQgMzkuMjM5IC0yMy40OTQgNDEuOTM5IC0yNS40NjQgNDUuODU5IEwgLTIxLjQ4NCA0OC45NDkgQyAtMjAuNTM0IDQ2LjA5OSAtMTcuODg0IDQzLjk4OSAtMTQuNzU0IDQzLjk4OSBaIi8+CiAgPC9nPgo8L3N2Zz4=
 ```
 
+## Per-AAGUID Assets (`dist/`)
+
+The `dist/` directory contains individual files split from `combined_aaguid.json`, making it easy to fetch metadata and icons for a specific AAGUID directly via raw GitHub URLs without downloading the entire JSON blob.
+
+### Structure
+
+```
+dist/
+├── index.json                              # { "aaguid": "name", ... }
+├── adce0002-35bc-c60a-648b-0b25f1f05503/
+│   ├── meta.json                           # { "name": "Chrome on Mac", "icon_dark": "icon-dark.svg", ... }
+│   ├── icon-dark.svg
+│   └── icon-light.svg
+└── ...
+```
+
+### Usage
+
+Fetch icon or metadata for a known AAGUID directly:
+
+```
+https://raw.githubusercontent.com/passkeydeveloper/passkey-authenticator-aaguids/main/dist/{aaguid}/icon-dark.svg
+https://raw.githubusercontent.com/passkeydeveloper/passkey-authenticator-aaguids/main/dist/{aaguid}/meta.json
+```
+
+Or use `dist/index.json` for a lightweight name-only lookup without downloading the full `combined_aaguid.json`.
+
+### How it stays in sync
+
+A [GitHub Action](.github/workflows/split-aaguids.yml) automatically regenerates `dist/` whenever `combined_aaguid.json` or `aaguid.json` changes on `main`. On pull requests, the same workflow runs as a check to verify `dist/` is up to date.
+
+To regenerate locally:
+
+```bash
+bash scripts/split-aaguids.sh
+```
+
 ## Contributing
 
 If you represent a passkey provider, you can add your AAGUID by creating a pull request. Be sure to validate your changes using a JSON Schema tool (ajv, for example). A validation will also take place when your PR is created.
