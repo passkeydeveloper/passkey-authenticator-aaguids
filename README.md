@@ -1,19 +1,36 @@
 # Passkey Provider AAGUIDs
 
-This is a **community-driven** list of known passkey provider AAGUIDs to assist with naming passkeys in end user passkey management interfaces (e.g. account settings). **It is not intended to be used for any other purpose** and **_could go away at any time_**. 
+## Deprecation Notice
 
-> [!IMPORTANT]  
+> [!WARNING]
+> These lists are now officially deprecated. **PLEASE READ BELOW**.
+
+**If you are a credential manager vendor**, see [FIDO MDS Migration](https://github.com/passkeydeveloper/passkey-authenticator-aaguids/wiki/FIDO-MDS-Migration) for instructions on how to add your entry to FIDO's Metadata Service. Your entry here ***WILL NOT be automatically moved***.
+
+**If you are a WebAuthn Relying Party** (e.g., a site/service that uses passkeys), see [RP Fallback guidance](https://github.com/passkeydeveloper/passkey-authenticator-aaguids/wiki/RP-Fallback).
+
+### Timeline
+
+- ✅ November 1, 2026: no new submissions accepted
+- 📆 January 6, 2027: the existing lists (`aaguid.json`, `aaguid_combined.json`) will return an empty object (`{}`)
+- 📆 July 6, 2027: this repository gets archived
+
+## Original Readme
+
+This is a **community-driven** list of known passkey provider AAGUIDs to assist with naming passkeys in end user passkey management interfaces (e.g. account settings). **It is not intended to be used for any other purpose** and **_could go away at any time_**.
+
+> [!IMPORTANT]
 > When this list is officially retired at some point in the future, the contents of both `aaguid.json` and `combined_aaguid.json` will be removed, **leaving an empty object**.
 >
-> It is **_highly_** recommended that you add some code that checks for an empty object after fetching the document (ex: `Object.keys(aaguid).length === 0`), and notifying the appropriate team(s). This README will also be updated with details.
+> It is ***highly*** recommended that you add some code that checks for an empty object after fetching the document (ex: `Object.keys(aaguid).length === 0`), and notifying the appropriate team(s). This README will also be updated with details.
 
 This does not replace [FIDO's Metadata Service (MDS)](https://fidoalliance.org/metadata/), which should continue to be used for all authoritative security details about FIDO authenticators. Some AAGUIDs in this list may not appear in FIDO MDS.
 
-A visual explorer of the list is available here: https://passkeydeveloper.github.io/passkey-authenticator-aaguids/explorer/
+A visual explorer of the list is available here: <https://passkeydeveloper.github.io/passkey-authenticator-aaguids/explorer/>
 
 ## Schema
 
-For full details, see the latest JSON schema file: [https://github.com/passkeydeveloper/passkey-authenticator-aaguids/blob/main/aaguid.json.schema](https://github.com/passkeydeveloper/passkey-authenticator-aaguids/blob/main/aaguid.json.schema)
+For full details, see the latest JSON schema file: <https://github.com/passkeydeveloper/passkey-authenticator-aaguids/blob/main/aaguid.json.schema>
 
 The top level property value is the AAGUID itself. For consistency in this file, ensure it is lowercase.
 
@@ -23,7 +40,7 @@ Each AAGUID member can also _optionally_ contain embedded icon data, for use nex
 
 The properties are `icon_dark` and `icon_light`. The values of these properties must be SVG data encoded into a base64 data URI. `icon_dark` should be a version targeted at dark mode and/or dark backgrounds. `icon_light` should be a version targeted at light mode and/or light backgrounds. The image must be square. The icon must be completely vector based and cannot contain embedded images (PNG, JPG, etc).
 
-Many web-based tools can do this encoding/formatting, including: [https://base64.guru/converter/encode/image/svg](https://base64.guru/converter/encode/image/svg) (select `Data URI` under "Output Format").
+Many web-based tools can do this encoding/formatting, including: <https://base64.guru/converter/encode/image/svg> (select `Data URI` under "Output Format").
 
 Example of the Google G icon as a base64 encoded SVG data URI:
 
@@ -35,6 +52,6 @@ data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPH
 
 ## Contributing
 
-If you represent a passkey provider, you can add your AAGUID by creating a pull request. Be sure to validate your changes using a JSON Schema tool (ajv, for example). A validation will also take place when your PR is created.
+~~If you represent a passkey provider, you can add your AAGUID by creating a pull request. Be sure to validate your changes using a JSON Schema tool (ajv, for example). A validation will also take place when your PR is created.~~
 
 Please be sure your GitHub profile is complete with an organization name, and contact information in your organization's realm (e.g. company email). If that is not possible, you may be asked to verify out of band.
